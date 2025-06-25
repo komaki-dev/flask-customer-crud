@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+    />
+    <title>削除一覧</title>
+  </head>
+  <body>
+    <h1>削除データ</h1>
+    <div class="container">
+      <table border="1">
+        <tr>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>備考</th>
+        </tr>
+        {% for delete in del_list %}
+        <tr>
+          <td>{{delete.name}}</td>
+          <td>{{delete.email}}</td>
+          <td>{{delete.phone}}</td>
+          <td>{{delete.note}}</td>
+          <form action="{{url_for('restore',id=delete['id'])}}" method="post">
+            <td><button type="submit">復元</button></td>
+          </form>
+        </tr>
+
+        {% endfor %}
+      </table>
+      <a href="{{url_for('index')}}" class="button-link">トップへ</a>
+    </div>
+  </body>
+</html>

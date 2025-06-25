@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+    />
+    <title>編集画面</title>
+  </head>
+  <body>
+    <h1>顧客データ編集</h1>
+    <div class="container">
+      <table border="1">
+        <tr>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>備考</th>
+        </tr>
+        <tr>
+          <form action="{{url_for('edit',id = customer.id)}}" method="post">
+            <input type="hidden" name="id" value="{{customer.id}}" />
+            <td><input type="text" name="name" value="{{customer.name}}" /></td>
+            <td>
+              <input type="text" name="email" value="{{customer.email}}" />
+            </td>
+            <td>
+              <input type="text" name="phone" value="{{customer.phone}}" />
+            </td>
+            <td><input type="text" name="note" value="{{customer.note}}" /></td>
+            <td><button type="submit">保存</button></td>
+          </form>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

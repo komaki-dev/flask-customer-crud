@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}"
+    />
+    <title>新規登録</title>
+  </head>
+  <body>
+    <h1>新規登録画面</h1>
+    <div class="container">
+      <table border="1">
+        <tr>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>備考</th>
+        </tr>
+
+        <tr>
+          <form action="{{url_for('form')}}" method="post">
+            <td><input type="text" name="name" /></td>
+            <td><input type="text" name="email" /></td>
+            <td><input type="text" name="phone" /></td>
+            <td><input type="text" name="note" /></td>
+            <td> <button type="submit">登録</button></td>
+          </form>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+    <title>顧客管理システム</title>
+  </head>
+  <body>
+    <h1>顧客データ</h1>
+    <div class="container">
+      <table border="1">
+        <tr>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>備考</th>
+        </tr>
+        {% for customer in customers %}
+        <tr>
+          <td>{{customer.name}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phone}}</td>
+          <td>{{customer.note}}</td>
+          <td>
+            <a href="{{url_for('edit',id = customer.id)}}" class="button-link"
+              >編集</a
+            >
+            <form action="{{url_for('delete',id = customer.id)}}" method="post">
+              <button type="submit" class="button-link" onclick="return confirm('削除しますか？')">削除</button>
+            </form>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </table>
+      <a href="{{url_for('form')}}" class="button-link ">新規登録</a>
+      <a href="{{url_for('deleted')}}" >削除データ</a>
+    </div>
+  </body>
+</html>
+
+
