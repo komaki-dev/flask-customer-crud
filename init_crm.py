@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS customers(
           name TEXT NOT NULL,
           email TEXT NOT NULL UNIQUE,
           phone text,
-          note TEXT
+          note TEXT,
+          deleted INTEGER DEFAULT 0
           )''')
 
 conn.commit()
